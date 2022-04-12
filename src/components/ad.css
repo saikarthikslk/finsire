@@ -1,0 +1,23 @@
+.ma{
+  background-color: aquamarine;
+  width: 100px;
+  height: 100px;
+}
+::-webkit-scrollbar {
+  width: 0.3em;
+
+}
+
+::-webkit-scrollbar-track-piece {
+  background:white
+}
+::-webkit-scrollbar-thumb {
+  background: gray;
+height: 1rem;
+}
+
+
+
+
+
+
