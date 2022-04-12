@@ -28,7 +28,7 @@ var setdata=async () =>{
      
      var sum=0
     var  mode=0
-   
+    var m=0
      if(d.length % 2===0){
             var r=d
             var n=r.length
@@ -40,21 +40,27 @@ var setdata=async () =>{
      if(d.length==1){
          median=d[0]
      }
-     var dic={}
-
+     var dt={}
+      
+    for (var pt=0;pt<d.length;pt++){
+        var r=d[pt]
+              dt[r]=0
+    }
+   
      for (var i=0;i<d.length;i++){
          sum=sum+d[i]
-         if(dic[d[i]]==null || dic[d[i]]==undefined){
-             dic[d]=1     
-     }else{
-        dic[d]=dic[d]+1}
-    if(mode>dic[d]){
-    
-    }else{
-        mode=dic[d]
+         r=d[i]
+         dt[r]=dt[r]+1
     }
-    
-     }
+    for (i=0;i<d.length;i++){
+        r=d[i]
+        if(m<dt[r]){
+            mode=r
+           
+            m=dt[r]
+        }
+    }
+  
     var standard=0
     
     var  mean=sum/d.length
@@ -64,7 +70,7 @@ var setdata=async () =>{
     }
     standard=Math.sqrt(standard/d.length)
 
-    setpr([...pr,{t:f,data:[{m:mean,data:"Mean"},{m:median,data:"Median"},{m:mean,data:"StdDev"},{m:mean,data:"Mode"}]}])
+    setpr([...pr,{t:f,data:[{m:mean,data:"Mean"},{m:median,data:"Median"},{m:standard,data:"StdDev"},{m:mode,data:"Mode"}]}])
     
   
 
@@ -90,7 +96,7 @@ var setdata=async () =>{
     
      var sum=0
     var  mode=0
-   
+   var m=0
      if(d.length % 2===0){
             var r=d
             var n=r.length
@@ -102,23 +108,29 @@ var setdata=async () =>{
      if(d.length==1){
          median=d[0]
      }
-     var dic={}
-
+     var dt={}
+      
+    for (var pt=0;pt<d.length;pt++){
+        var r=d[pt]
+              dt[r]=0
+    }
+   
      for (var i=0;i<d.length;i++){
          sum=sum+d[i]
-         if(dic[d[i]]==null || dic[d[i]]==undefined){
-             dic[d]=1     
-     }else{
-        dic[d]=dic[d]+1}
-    if(mode>dic[d]){
-    
-    }else{
-        mode=dic[d]
+         r=d[i]
+         dt[r]=dt[r]+1
     }
-    
-     }
+    for (i=0;i<d.length;i++){
+        r=d[i]
+        if(m<dt[r]){
+            mode=r
+            m=dt[r]
+        }
+    }
+  
+   
     var standard=0
-    
+   
     var  mean=sum/d.length
      for (var i=0;i<d.length;i++){
        standard=standard+(d[i]-mean)**2
@@ -130,7 +142,7 @@ var setdata=async () =>{
      
 
 
-    setstat([{m:mean,data:"Mean"},{m:median,data:"Median"},{m:mean,data:"StdDev"},{m:mean,data:"Mode"}])
+    setstat([{m:mean,data:"Mean"},{m:median,data:"Median"},{m:standard,data:"StdDev"},{m:mode,data:"Mode"}])
 
   
 
